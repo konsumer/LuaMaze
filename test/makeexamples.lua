@@ -13,11 +13,11 @@ function lines_from(file)
 end
 
 -- monkey-patch random() to provide known-numbers (that can be used in other languages)
-local intpointer = 0
+local rndpointer = 0
 local numbers = lines_from("test/numbers.txt")
 math.random = function (lower, upper)
-  intpointer = intpointer + 1
-  local n = numbers[(intpointer % #numbers) + 1] / 1000
+  rndpointer = rndpointer + 1
+  local n = numbers[(rndpointer % #numbers) + 1] / 1000
   if lower == nil and upper == nil then
     return n
   end
@@ -48,7 +48,7 @@ local generators = {
 
 for a,g in pairs(generators) do
   local out = io.open("test/examples/" .. a .. ".txt", "w")
-  intpointer = 0
+  rndpointer = 0
   local maze = Maze:new(20, 20, true)
   generators[a](maze)
   out:write(tostring(maze))
