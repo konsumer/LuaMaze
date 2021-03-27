@@ -18,11 +18,11 @@ function ansicolor(code)
 end
 
 function pass(name)
-  print(ansicolor(0) .. name .. ": " .. ansicolor(32) .. "YES" .. ansicolor(0) )
+  print(ansicolor(0) .. name .. ": " .. ansicolor(32) .. "OK" .. ansicolor(0) )
 end
 
 function fail(name)
-  print(ansicolor(0) .. name .. ": " .. ansicolor(31) .. "NO" .. ansicolor(0) )
+  print(ansicolor(0) .. name .. ": " .. ansicolor(31) .. "FAIL" .. ansicolor(0) )
 end
 
 -- monkey-patch random() to provide known-numbers (that can be used in other languages)
