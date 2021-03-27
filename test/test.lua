@@ -17,6 +17,14 @@ function ansicolor(code)
    return string.char(27) .. '[' .. tostring(code) .. 'm'
 end
 
+function pass(name)
+  print(ansicolor(0) .. name .. ": " .. ansicolor(32) .. "YES" .. ansicolor(0) )
+end
+
+function fail(name)
+  print(ansicolor(0) .. name .. ": " .. ansicolor(31) .. "NO" .. ansicolor(0) )
+end
+
 -- monkey-patch random() to provide known-numbers (that can be used in other languages)
 local intpointer = 0
 local numbers = lines_from("test/numbers.txt")
@@ -57,8 +65,8 @@ for a,g in pairs(generators) do
   local maze = Maze:new(20, 20, true)
   generators[a](maze)
   if tostring(maze) ~= test then
-    print(ansicolor(0) .. a .. ": " .. ansicolor(31) .. "NO" .. ansicolor(0) )
+    fail(a)
   else
-    print(ansicolor(0) .. a .. ": " .. ansicolor(32) .. "YES" .. ansicolor(0) )
+    pass(a)
   end
 end
