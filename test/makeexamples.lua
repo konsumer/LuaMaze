@@ -1,6 +1,6 @@
 #!/usr/bin/env luajit
 
--- unit-tests for luamaze
+-- this generates text-examples used in unit-tests
 -- run from parent dir: luajit test/test.lua
 
 -- get all lines from a file
